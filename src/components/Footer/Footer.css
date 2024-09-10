@@ -1,0 +1,15 @@
+/* Footer.css */
+
+footer p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+footer p:first-of-type {
+  font-weight: bold;
+}
+
+footer p:last-of-type {
+  font-size: 0.9em;
+  color: #00c6ff; /* Light blue for emphasis */
+}

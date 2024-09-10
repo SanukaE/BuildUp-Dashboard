@@ -1,0 +1,8 @@
+POST https://buildup-backend.onrender.com/staff/register
+Content-Type: application/json
+
+{
+    "firstName": "Spongebob",
+    "lastName": "Squarepants",
+    "email": "ItzSanuka@outlook.com"
+}

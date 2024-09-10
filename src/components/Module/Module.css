@@ -1,0 +1,33 @@
+/* OptionsMenu.css */
+
+.options-menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e293b; /* Dark blue background */
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.options-menu-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.options-menu-container img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.options-menu-container p {
+  font-size: 1.2em;
+  margin: 0;
+  color: #00c6ff; /* Lighter blue for the text */
+  text-align: center;
+}
