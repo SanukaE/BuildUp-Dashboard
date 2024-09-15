@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './StaffList.css';
 
-function StaffList({ isAdmin }) {
+function StaffList({ staffData }) {
+  const navigate = useNavigate();
   const [staffList, setStaffList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isStaffAdmin, setIsStaffAdmin] = useState(
+    staffData && staffData.isAdmin
+  );
 
   const loadingContainer = (
     <div className="flex flex-col items-center justify-center space-y-2">
@@ -11,6 +17,10 @@ function StaffList({ isAdmin }) {
       <p className="text-blue-200 animate-pulse">Loading...</p>
     </div>
   );
+
+  useEffect(() => {
+    if (staffData && staffData.isAdmin) setIsStaffAdmin(true);
+  });
 
   useEffect(() => {
     async function getData() {
@@ -62,13 +72,21 @@ function StaffList({ isAdmin }) {
             ))}
       </div>
 
-      {isAdmin && (
+      {isStaffAdmin ? (
         <div className="p-4 bg-blue-700">
-          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105">
+          <button
+            onClick={() =>
+              navigate('/register-staff', {
+                replace: true,
+                state: { loggedInStaff: staffData },
+              })
+            }
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105"
+          >
             Register Staff
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
