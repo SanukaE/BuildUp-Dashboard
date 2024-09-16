@@ -5,6 +5,7 @@ import Login from './pages/Login/Login.jsx';
 import RegisterStaff from './pages/RegisterStaff/RegisterStaff.jsx';
 import ViewProfile from './pages/ViewProfile/ViewProfile.jsx';
 import ViewRequests from './pages/ViewRequests/ViewRequests.jsx';
+import AnsweredRequests from './pages/AnsweredRequests/AnsweredRequests.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/register-staff" element={<RegisterStaff />} />
         <Route path="/profile" element={<ViewProfile />} />
         <Route path="/requests" element={<ViewRequests />} />
+        <Route path="/answered-requests" element={<AnsweredRequests />} />
       </Routes>
     </BrowserRouter>
   );
