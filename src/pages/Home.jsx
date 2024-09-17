@@ -35,13 +35,12 @@ function Home() {
         (staff && staff.avatarURL) ||
         'https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png',
     },
-    { name: 'View Requests', imageURL: '/images/tasks.png' },
-    { name: 'Send Drone', imageURL: '/images/messages.png' },
-    { name: 'Control Printer', imageURL: '/images/calendar.png' },
+    { name: 'View Requests', imageURL: '/request.svg' },
   ];
 
   const adminModules = [
-    { name: 'Answered Requests', imageURL: '/images/analytics.png' },
+    { name: 'Answered Requests', imageURL: '/accepted.jpg' },
+    { name: 'Send Drone', imageURL: '/drone.svg' },
   ];
 
   return (

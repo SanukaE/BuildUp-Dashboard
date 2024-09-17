@@ -14,6 +14,38 @@ function RequestCard({
 }) {
   const [status, setStatus] = useState('pending');
   const [isVisible, setIsVisible] = useState(true);
+  const [imageURL, setImageURL] = useState('');
+
+  useEffect(() => {
+    const memeImages = [
+      '/memeOne.gif',
+      '/memeTwo.gif',
+      '/memeThree.gif',
+      '/memeFour.gif',
+      '/memeFive.gif',
+    ];
+    const isMeme = Math.floor(Math.random() * 2);
+
+    let newImageURL;
+    if (isMeme) {
+      newImageURL = memeImages[Math.floor(Math.random() * 5)];
+    } else {
+      switch (designID) {
+        case '#1':
+          newImageURL = '/designOne.jpg';
+          break;
+        case '#2':
+          newImageURL = '/designTwo.jpg';
+          break;
+        case '#3':
+          newImageURL = '/designThree.jpg';
+          break;
+        default:
+          newImageURL = '/defaultDesign.jpg';
+      }
+    }
+    setImageURL(newImageURL);
+  }, [designID]);
 
   const handleRequest = async (action) => {
     setStatus('loading');
@@ -66,7 +98,7 @@ function RequestCard({
         >
           <div className="relative">
             <img
-              src={`../../../public/${designID}.jpg`}
+              src={imageURL}
               alt={designID}
               className="w-full h-48 object-cover"
             />

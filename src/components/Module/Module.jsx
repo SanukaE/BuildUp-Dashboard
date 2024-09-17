@@ -29,13 +29,7 @@ function Module({ imageURL, name }) {
         });
         break;
       case 'Send Drone':
-        navigate('/control-drone', {
-          replace: true,
-          state: { loggedInStaff: staff },
-        });
-        break;
-      case 'Control Printer':
-        navigate('/control-printer', {
+        navigate('/send-drone', {
           replace: true,
           state: { loggedInStaff: staff },
         });

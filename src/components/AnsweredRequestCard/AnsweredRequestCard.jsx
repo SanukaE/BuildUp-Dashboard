@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Trash2 } from 'lucide-react';
 
 function AnsweredRequestCard({
-  isAcceptedCategory,
   firstName,
   lastName,
   email,
@@ -15,6 +14,38 @@ function AnsweredRequestCard({
 }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [imageURL, setImageURL] = useState('');
+
+  useEffect(() => {
+    const memeImages = [
+      '/memeOne.gif',
+      '/memeTwo.gif',
+      '/memeThree.gif',
+      '/memeFour.gif',
+      '/memeFive.gif',
+    ];
+    const isMeme = Math.floor(Math.random() * 2);
+
+    let newImageURL;
+    if (isMeme) {
+      newImageURL = memeImages[Math.floor(Math.random() * 5)];
+    } else {
+      switch (designID) {
+        case '#1':
+          newImageURL = '/designOne.jpg';
+          break;
+        case '#2':
+          newImageURL = '/designTwo.jpg';
+          break;
+        case '#3':
+          newImageURL = '/designThree.jpg';
+          break;
+        default:
+          newImageURL = '/defaultDesign.jpg';
+      }
+    }
+    setImageURL(newImageURL);
+  }, [designID]);
 
   const deleteRequest = async () => {
     setIsDeleting(true);
@@ -29,9 +60,7 @@ function AnsweredRequestCard({
       if (!response.ok)
         throw new Error(`The response was not ok with code ${response.status}`);
 
-      // Animate the card out
       setIsVisible(false);
-      // Wait for the animation to complete before calling onRequestHandled
       setTimeout(() => onRequestHandled(requestID), 500);
     } catch (error) {
       console.error('Error deleting request:', error.message);
@@ -56,7 +85,7 @@ function AnsweredRequestCard({
         >
           <div className="relative">
             <img
-              src={`../../../public/${designID}.jpg`}
+              src={imageURL}
               alt={designID}
               className="w-full h-48 object-cover"
             />
